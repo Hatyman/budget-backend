@@ -1,4 +1,4 @@
-package ru.tpu.todo
+package ru.tpu.budget.base
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

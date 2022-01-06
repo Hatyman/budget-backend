@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1641377663249-1" author="Kiril (generated)">
+        <createTable tableName="budget_item">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_budgetitem"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="category_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-2" author="Kiril (generated)">
+        <createTable tableName="budget_operation">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_budgetoperation"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="budget_item_id" type="INT"/>
+            <column name="value" type="DOUBLE"/>
+            <column name="date" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-3" author="Kiril (generated)">
+        <createTable tableName="budget_state">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_budgetstate"/>
+            </column>
+            <column name="value" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-4" author="Kiril (generated)">
+        <createTable tableName="categories">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_categories"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="is_income" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-5" author="Kiril (generated)">
+        <createTable tableName="plan_items">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_planitems"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plan_id" type="INT"/>
+            <column name="budget_item_id" type="INT"/>
+            <column name="value" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-6" author="Kiril (generated)">
+        <createTable tableName="plans">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_plans"/>
+            </column>
+            <column name="created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="DATE"/>
+            <column name="accuracy" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1641377663249-7" author="Kiril (generated)">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="budget_item"
+                                 constraintName="FK_BUDGETITEM_ON_CATEGORY" referencedColumnNames="id"
+                                 referencedTableName="categories"/>
+    </changeSet>
+    <changeSet id="1641377663249-8" author="Kiril (generated)">
+        <addForeignKeyConstraint baseColumnNames="budget_item_id" baseTableName="budget_operation"
+                                 constraintName="FK_BUDGETOPERATION_ON_BUDGETITEM" referencedColumnNames="id"
+                                 referencedTableName="budget_item"/>
+    </changeSet>
+    <changeSet id="1641377663249-9" author="Kiril (generated)">
+        <addForeignKeyConstraint baseColumnNames="budget_item_id" baseTableName="plan_items"
+                                 constraintName="FK_PLANITEMS_ON_BUDGETITEM" referencedColumnNames="id"
+                                 referencedTableName="budget_item"/>
+    </changeSet>
+    <changeSet id="1641377663249-10" author="Kiril (generated)">
+        <addForeignKeyConstraint baseColumnNames="plan_id" baseTableName="plan_items"
+                                 constraintName="FK_PLANITEMS_ON_PLAN" referencedColumnNames="id"
+                                 referencedTableName="plans"/>
+    </changeSet>
+
+</databaseChangeLog>

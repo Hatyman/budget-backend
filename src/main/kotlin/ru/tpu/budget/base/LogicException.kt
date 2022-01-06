@@ -1,6 +1,4 @@
-package ru.tpu.todo
-
-import java.lang.RuntimeException
+package ru.tpu.budget.base
 
 class LogicException(
     val httpCode: Int,

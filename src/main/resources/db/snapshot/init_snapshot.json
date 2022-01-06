@@ -1,0 +1,51 @@
+{
+  "snapshot": {
+    "created": "2022-01-05T17:13:35.738",
+    "database": {
+      "productVersion": "13.3 (Debian 13.3-1.pgdg100+1)",
+      "shortName": "postgresql",
+      "majorVersion": "13",
+      "minorVersion": "3",
+      "user": "postgres",
+      "productName": "PostgreSQL",
+      "url": "jdbc:postgresql://localhost:5432/tpu_budget"
+    },
+    "objects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "default": true,
+            "name": "tpu_budget",
+            "snapshotId": "061f104"
+          }
+        }]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#061f104",
+            "default": true,
+            "name": "public",
+            "snapshotId": "061f105"
+          }
+        }]
+      
+    },
+    "snapshotControl": {
+      "snapshotControl": {
+        "includedType": [
+          "liquibase.structure.core.Catalog",
+          "liquibase.structure.core.Column",
+          "liquibase.structure.core.ForeignKey",
+          "liquibase.structure.core.Index",
+          "liquibase.structure.core.PrimaryKey",
+          "liquibase.structure.core.Schema",
+          "liquibase.structure.core.Sequence",
+          "liquibase.structure.core.Table",
+          "liquibase.structure.core.UniqueConstraint",
+          "liquibase.structure.core.View"]
+        
+      }
+    }
+  }
+}

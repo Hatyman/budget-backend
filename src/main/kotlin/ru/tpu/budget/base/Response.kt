@@ -1,4 +1,4 @@
-package ru.tpu.todo
+package ru.tpu.budget.base
 
 class Response<T>(
     val code: Int = 200,

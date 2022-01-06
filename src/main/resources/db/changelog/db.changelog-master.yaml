@@ -1,0 +1,7 @@
+databaseChangeLog: #параметр в котором находятся миграции
+  - include: # список активных миграций
+      file: db/changelog/changeset/05-01-changelog.xml # путь к файлу миграции
+  - include:
+      file: db/changelog/changeset/05-02-changelog.xml
+  - include:
+      file: db/changelog/changeset/06-01-changelog.xml
