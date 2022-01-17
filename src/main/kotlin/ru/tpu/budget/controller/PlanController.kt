@@ -2,10 +2,11 @@ package ru.tpu.budget.controller
 
 import org.springframework.web.bind.annotation.*
 import ru.tpu.budget.base.Response
+import ru.tpu.budget.dto.CreatePlanItemRequestDto
+import ru.tpu.budget.dto.CreatePlanRequestDto
 import ru.tpu.budget.dto.PlanDto
 import ru.tpu.budget.dto.PlanItemDto
 import ru.tpu.budget.services.IPlanService
-import java.time.LocalDate
 
 @RestController
 @RequestMapping("/plan")
@@ -18,8 +19,8 @@ class PlanController(
     }
 
     @PostMapping("/")
-    fun createNewPlan(startDate: LocalDate): Response<PlanDto> {
-        return Response(data = planService.createNewPlan(startDate))
+    fun createNewPlan(@RequestBody dto: CreatePlanRequestDto): Response<PlanDto> {
+        return Response(data = planService.createNewPlan(dto.startDate))
     }
 
     @DeleteMapping("/{id}")
@@ -33,8 +34,8 @@ class PlanController(
     }
 
     @PostMapping("/{planId}/items")
-    fun createNewPlanItem(value: Double, @PathVariable planId: Int, budgetItemId: Int): Response<PlanItemDto> {
-        return Response(data = planService.createNewPlanItem(value, planId, budgetItemId))
+    fun createNewPlanItem(dto: CreatePlanItemRequestDto, @PathVariable planId: Int): Response<PlanItemDto> {
+        return Response(data = planService.createNewPlanItem(dto.value, planId, dto.budgetItemId))
     }
 
     @DeleteMapping("/items/{id}")

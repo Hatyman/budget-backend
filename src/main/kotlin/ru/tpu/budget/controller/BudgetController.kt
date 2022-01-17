@@ -7,6 +7,7 @@ import ru.tpu.budget.base.Response
 import ru.tpu.budget.dto.BudgetItemDto
 import ru.tpu.budget.dto.BudgetOperationDto
 import ru.tpu.budget.dto.BudgetStateDto
+import ru.tpu.budget.dto.CreateBudgetItemRequestDto
 
 /**
  * Контроллер с эндпоинтами для ресурса /todo
@@ -31,8 +32,8 @@ class BudgetController(
     }
 
     @PostMapping("/items")
-    fun createNewItem(title: String, categoryId: Int): Response<BudgetItemDto> {
-        return Response(data = budgetService.createNewBudgetItem(title, categoryId))
+    fun createNewItem(@RequestBody dto: CreateBudgetItemRequestDto): Response<BudgetItemDto> {
+        return Response(data = budgetService.createNewBudgetItem(dto.title, dto.categoryId))
     }
 
     @PostMapping("/operations")
